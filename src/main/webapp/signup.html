@@ -62,21 +62,31 @@
             text-decoration: none;
             font-weight: bold;
         }
-
+        #gen
+        {
+            padding-left: 50px;
+            align-items: center;
+            display: flex;
+            width: 200px;
+            height: 30px;
+        }
     </style>
 </head>
 <body>
 
 <div class="signup-container">
     <h2>Sign Up</h2>
-    <form action="signup" method="post">
+    <form action="signup" method="get">
         <input type="text" placeholder="Username" required name="name">
         <input type="email" placeholder="Email" required name="email">
         <input type="password" placeholder="Password" required name="password">
-        <input type="password" placeholder="Password" required name="password">
-        <input type="radio" required value="male" name="gender"><span> Male</span>&nbsp;&nbsp;
-        <input type="radio" required value="female" name="gender"><span> Female</span><br/>
-        <select id="dob" name="dob">
+        <input type="date" required name="dob">
+        <div id="gen" >
+            <label for="gender">Gender&nbsp;:</label>
+            <input type="radio" name="gender" required value="Male">Male
+            <input  type="radio" name="gender" required value="Female">Female
+        </div>
+        
         <button type="submit">Sign Up</button>
     </form>
     <p class="terms-text">By signing up, you agree to our <a href="#" class="terms-link">Terms of Service</a>.</p>
