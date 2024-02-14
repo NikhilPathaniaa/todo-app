@@ -2,6 +2,7 @@ package service;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -13,7 +14,7 @@ import dto.TodoUser;
 public class TodoService {
 	public void signup(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 		TodoUser user = new TodoUser();
-		
+
 		user.setName(req.getParameter("name"));
 		user.setEmail(req.getParameter("email"));
 		user.setPassword(req.getParameter("password"));
@@ -22,9 +23,18 @@ public class TodoService {
 		user.setGender(req.getParameter("gender"));
 
 		TodoDao dao = new TodoDao();
-		dao.saveUser(user);
 
-		resp.getWriter().print("<h1 align='center' style='color:green'>Account Created  Successfully</h1>");
-		req.getRequestDispatcher("login.html").include(req, resp);
+		List<TodoUser> list = dao.findByEmail(user.getEmail());
+
+		if (list.isEmpty()) {
+			dao.saveUser(user);
+			resp.getWriter().print("<h1 align='center' style='color:green'>Account Created  Successfully</h1>");
+			req.getRequestDispatcher("login.html").include(req, resp);
+		} 
+		else 
+		{
+			resp.getWriter().print("<h1 align='center' style='color:red'>Email already exists</h1>");
+			req.getRequestDispatcher("signup.html").include(req, resp);
+		}
 	}
 }
