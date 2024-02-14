@@ -12,7 +12,10 @@ import dao.TodoDao;
 import dto.TodoUser;
 
 public class TodoService {
+	TodoDao dao = new TodoDao();
+	
 	public void signup(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
+		
 		TodoUser user = new TodoUser();
 
 		user.setName(req.getParameter("name"));
@@ -22,7 +25,7 @@ public class TodoService {
 		user.setDob(LocalDate.parse(req.getParameter("dob")));
 		user.setGender(req.getParameter("gender"));
 
-		TodoDao dao = new TodoDao();
+		
 
 		List<TodoUser> list = dao.findByEmail(user.getEmail());
 
@@ -36,5 +39,33 @@ public class TodoService {
 			resp.getWriter().print("<h1 align='center' style='color:red'>Email already exists</h1>");
 			req.getRequestDispatcher("signup.html").include(req, resp);
 		}
+	}
+
+	public void login(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String email = req.getParameter("email");
+		String password = req.getParameter("password");
+		
+		List<TodoUser> list = dao.findByEmail(email);
+		
+		if(list.isEmpty())
+		{
+			resp.getWriter().print("<h1 align='center' style='color:red'>Icorrect Email</h1>");
+			req.getRequestDispatcher("login.html").include(req, resp);
+		}
+		else
+		{
+			TodoUser user = list.get(0);
+			if(user.getPassword().equals(password))
+			{
+				resp.getWriter().print("<h1 align='center' style='color:green'>Login Success</h1>");
+				req.getRequestDispatcher("Home.jsp	").include(req, resp);
+			}
+			else
+			{
+				resp.getWriter().print("<h1 align='center' style='color:red'>Icorrect Password</h1>");
+				req.getRequestDispatcher("login.html").include(req, resp);
+			}
+		}
+		
 	}
 }
