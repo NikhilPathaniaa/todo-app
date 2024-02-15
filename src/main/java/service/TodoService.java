@@ -2,6 +2,7 @@ package service;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -9,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.TodoDao;
+import dto.TodoTask;
 import dto.TodoUser;
 
 public class TodoService {
@@ -58,7 +60,7 @@ public class TodoService {
 			if(user.getPassword().equals(password))
 			{
 				resp.getWriter().print("<h1 align='center' style='color:green'>Login Success</h1>");
-				req.getRequestDispatcher("Home.jsp	").include(req, resp);
+				req.getRequestDispatcher("home.jsp").include(req, resp);
 			}
 			else
 			{
@@ -66,6 +68,19 @@ public class TodoService {
 				req.getRequestDispatcher("login.html").include(req, resp);
 			}
 		}
+		
+	}
+
+	public void addTask(HttpServletRequest req, HttpServletResponse resp) {
+		String tname=req.getParameter("tname");
+		String tdescription=req.getParameter("tdescription");
+		
+		TodoTask task = new TodoTask();
+		task.setName(tname);
+		task.setDescription(tdescription);
+		task.setStatus(false);
+		task.setCreatedTime(LocalDateTime.now());
+		task.setUser(null);
 		
 	}
 }
