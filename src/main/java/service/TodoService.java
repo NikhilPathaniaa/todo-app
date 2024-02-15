@@ -59,6 +59,7 @@ public class TodoService {
 			TodoUser user = list.get(0);
 			if(user.getPassword().equals(password))
 			{
+				req.getSession().setAttribute("user", user);
 				resp.getWriter().print("<h1 align='center' style='color:green'>Login Success</h1>");
 				req.getRequestDispatcher("home.jsp").include(req, resp);
 			}
@@ -80,7 +81,9 @@ public class TodoService {
 		task.setDescription(tdescription);
 		task.setStatus(false);
 		task.setCreatedTime(LocalDateTime.now());
-		task.setUser(null);
+		
+		TodoUser user = (TodoUser) req.getSession().getAttribute("user");
+		task.setUser(user);
 		
 	}
 }
