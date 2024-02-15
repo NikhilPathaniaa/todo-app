@@ -8,6 +8,8 @@
 </head>
 <body>
 	<h1>Home Page</h1>
+	<form action="">
+	</form>
 	<button><a href="add-task.html">add tasks</a></button>
 </body>
 </html>

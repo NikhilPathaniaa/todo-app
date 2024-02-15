@@ -25,4 +25,10 @@ public class TodoDao {
 	{	
 		return manager.createQuery("select x from TodoUser x where email=?1").setParameter(1, email).getResultList();
 	}
+	
+	public void saveTask(TodoUser task) {
+		transaction.begin();
+		manager.persist(task);
+		transaction.commit();
+	}
 }
