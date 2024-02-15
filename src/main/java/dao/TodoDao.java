@@ -7,6 +7,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
+import dto.TodoTask;
 import dto.TodoUser;
 
 public class TodoDao {
@@ -26,7 +27,7 @@ public class TodoDao {
 		return manager.createQuery("select x from TodoUser x where email=?1").setParameter(1, email).getResultList();
 	}
 	
-	public void saveTask(TodoUser task) {
+	public void saveTask(TodoTask task) {
 		transaction.begin();
 		manager.persist(task);
 		transaction.commit();

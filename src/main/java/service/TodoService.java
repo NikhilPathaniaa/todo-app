@@ -72,7 +72,7 @@ public class TodoService {
 		
 	}
 
-	public void addTask(HttpServletRequest req, HttpServletResponse resp) {
+	public void addTask(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String tname=req.getParameter("tname");
 		String tdescription=req.getParameter("tdescription");
 		
@@ -85,6 +85,9 @@ public class TodoService {
 		TodoUser user = (TodoUser) req.getSession().getAttribute("user");
 		task.setUser(user);
 		
+		dao.saveTask(task);
 		
+		resp.getWriter().print("<h1 align='center' style='color:green'>Task Added Success</h1>");
+		req.getRequestDispatcher("home.jsp").include(req, resp);
 	}
 }
