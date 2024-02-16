@@ -32,4 +32,9 @@ public class TodoDao {
 		manager.persist(task);
 		transaction.commit();
 	}
+	
+	public List<TodoTask> fetchTaskByUser(int id)
+	{
+		return manager.createQuery("select x from TodoTask x where user_id=?1").setParameter(1, id).getResultList();
+	}
 }
