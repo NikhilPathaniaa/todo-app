@@ -1,7 +1,7 @@
 <%@page import="dto.TodoTask"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
- 
+<%@ page import="java.util.List;" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,27 +12,27 @@
 	<%
 	List<TodoTask> tasks = (List<TodoTask>) request.getAttribute("tasks");
 	%>
-	<h1>Home Page</h1>
+	<h1 align="center">Home Page</h1>
 	<%if(!tasks.isEmpty()) {%>
 	<div>
 		<table>
 			<tr>
-				<th>task name</th>
-				<th>task name</th>
-				<th>task name</th>
-				<th>task name</th>
-				<th>task name</th>
-				<th>task name</th>
+				<th>task Name</th>
+				<th>task Descripton</th>
+				<th>Created Time</th>
+				<th>Status</th>
+				<th>Delete</th>
+				<th>Edit</th>
 			</tr>
 			
 			<%for(TodoTask task :tasks) {%>
 			<tr>
-				<th>task name</th>
-				<th>task name</th>
-				<th>task name</th>
-				<th>task name</th>
-				<th>task name</th>
-				<th>task name</th>
+				<th><%=task.getName() %></th>
+				<th><%=task.getDescription() %></th>
+				<th><%=task.getCreatedTime() %></th>
+				<th><%=task.isStatus() %></th>
+				<th><button>Delete</button></th>
+				<th><button>Edit</button></th>
 			</tr>
 			<%} %>
 		</table>
