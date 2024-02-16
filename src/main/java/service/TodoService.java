@@ -61,6 +61,10 @@ public class TodoService {
 			{
 				req.getSession().setAttribute("user", user);
 				resp.getWriter().print("<h1 align='center' style='color:green'>Login Success</h1>");
+				
+				List<TodoTask> tasks = dao.fetchTaskByUser(user.getId());
+				req.setAttribute("tasks", tasks);
+				
 				req.getRequestDispatcher("home.jsp").include(req, resp);
 			}
 			else
@@ -89,6 +93,9 @@ public class TodoService {
 		
 		
 		resp.getWriter().print("<h1 align='center' style='color:green'>Task Added Success</h1>");
+		
+		List<TodoTask> tasks = dao.fetchTaskByUser(user.getId());
+		req.setAttribute("tasks", tasks);
 		req.getRequestDispatcher("home.jsp").include(req, resp);
 	}
 }
