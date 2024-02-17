@@ -29,7 +29,7 @@
 				<th>Delete</th>
 				<th>Edit</th>
 			</tr>
-			
+			cool
 			<%for(TodoTask task :tasks) {%>
 			<tr>
 				<th><%=task.getName() %></th>
