@@ -14,14 +14,7 @@ import service.TodoService;
 public class CompleteTaskServlet extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		if(req.getSession().getAttribute("user")!=null)
-		{
 			TodoService service = new TodoService();
 			service.completeTask(req,resp);
-		}
-		else
-		{
-			
-		}
 	}
 }

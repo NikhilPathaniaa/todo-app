@@ -1,43 +1,40 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+<meta charset="ISO-8859-1">
+<title>Add Task</title>
 <style>
-    body
-    {
-        height: 90vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    form
-    {
-        height: 100px;
-        width: 300px;
-        
-    }
-    input
-    {
-        width: 90%;
-    }
-    button
-    {
-        margin-top: 20px;
-        margin-left: 30px;
-    }
+div {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
 </style>
 </head>
 <body>
-    <form action="edit-task" method="post">
-    <input type="hidden" name="id" value=<%id %>>
-        <fieldset>
-            <legend>Edit Task Here,</legend>
-            Task Name: <input type="text" name="tname">
-            Task description : <input type="text" name="tdescription">
-            <button>Edit Task</button>
-            <button>Logout</button> 
-        </fieldset>
-    </form>
+	<div>
+		<h1>Edit Task</h1>
+		<form action="update-task" method="post">
+		<input type="hidden" name="id" value="<%=request.getParameter("id")%>">
+			<fieldset>
+				<legend>Enter Task here,</legend>
+				<table>
+					<tr>
+						<th>Task Name:</th>
+						<th><input type="text" name="tname" value="<%=request.getParameter("name")%>"></th>
+					</tr>
+					<tr>
+						<th>Task Description:</th>
+						<th><input type="text" name="tdescription" value="<%=request.getParameter("description")%>"></th>
+					</tr>
+					<tr>
+						<th><button>Update</button></th>
+						<th><button type="reset">Cancel</button></th>
+					</tr>
+				</table>
+			</fieldset>
+		</form>
+	</div>
 </body>
 </html>
