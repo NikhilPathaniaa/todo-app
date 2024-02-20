@@ -35,12 +35,12 @@
 				<th><%=task.getDescription() %></th>
 				<th><%=task.getCreatedTime() %></th>
 				<th><% if(task.isStatus()) {%>
-				%>Completed<%
+				Completed<%
 					}else{
 					%><a href="complete?id=<%=task.getId()%>"><button>Complete</button></a></th>
 					<%} %>
-				<th><button><a href="delete?id=<%=task.getId()%>"><button>delete</button></a></button></th>
-				<th><button>Edit</button></th>
+				<th><a href="delete?id=<%=task.getId()%>"><button>delete</button></a></th>
+				<th><a href="edit-task.jsp?name=<%=task.getName()%>&description<%= task.getDescription()%>>"><button>Edit</button></a></th>
 			</tr>
 			<%} %>
 		</table>
