@@ -37,4 +37,23 @@ public class TodoDao {
 	{
 		return manager.createQuery("select x from TodoTask x where user_id=?1").setParameter(1, id).getResultList();
 	}
+	
+	public void updateTask(TodoTask task) {
+		transaction.begin();
+		manager.persist(task);
+		transaction.commit();
+	}
+	
+	public List<TodoTask> fetchTaskById(int id)
+	{
+		return manager.find(TodoTask.class, id);
+	}
+	
+	public void deleteTask(TodoTask task) {
+		transaction.begin();
+		manager.remove(task);
+		transaction.commit();
+	}
+	
+
 }

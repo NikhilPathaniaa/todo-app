@@ -98,4 +98,19 @@ public class TodoService {
 		req.setAttribute("tasks", tasks);
 		req.getRequestDispatcher("home.jsp").include(req, resp);
 	}
+	
+	public void completeTask(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		int id = Integer.parseInt(req.getParameter("id"));
+		TodoTask task = dao.fetchTaskById(id);
+		
+		task.setStatus(true);
+		dao.updateTask(task);
+		
+		resp.getWriter().print("<h1 align='center' style='color:green'>Status Changed Successfully</h1>");
+		
+		TodoUser user = (TodoUser) req.getSession().getAttribute("user");
+		List<TodoTask> tasks = dao.fetchTaskByUser(user.getId());
+		req.setAttribute("tasks", tasks);
+		req.getRequestDispatcher("home.jsp").include(req, resp);
+	}
 }
