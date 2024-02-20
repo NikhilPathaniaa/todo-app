@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import service.TodoService;
 
-@WebServlet("/delete")
-public class DeleteServlet extends HttpServlet{
+@WebServlet("/complete")
+public class CompleteTaskServlet extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		if(req.getSession().getAttribute("user")!=null)
@@ -21,8 +21,7 @@ public class DeleteServlet extends HttpServlet{
 		}
 		else
 		{
-			resp.getWriter().print("");
-			req.getRequestDispatcher("login.html").include(req, resp);
+			
 		}
 	}
 }

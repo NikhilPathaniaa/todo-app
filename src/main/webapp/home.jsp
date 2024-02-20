@@ -34,14 +34,19 @@
 				<th><%=task.getName() %></th>
 				<th><%=task.getDescription() %></th>
 				<th><%=task.getCreatedTime() %></th>
-				<th><%=task.isStatus() %></th>
-				<th><button>Delete</button></th>
+				<th><% if(task.isStatus()) {%>
+				%>Completed<%
+					}else{
+					%><a href="complete?id=<%=task.getId()%>"><button>Complete</button></a></th>
+					<%} %>
+				<th><button><a href="delete?id=<%=task.getId()%>"><button>delete</button></a></button></th>
 				<th><button>Edit</button></th>
 			</tr>
 			<%} %>
 		</table>
 	</div>
 	<%} %>
-	<button><a href="add-task.html">add tasks</a></button>
+	<button><a href="add-task.html"><button class="extra">add tasks</button></a>
+	<a href="Logout"><button class="">Logout</button></a>
 </body>
 </html>
