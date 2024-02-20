@@ -8,10 +8,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import service.TodoService;
+
 @WebServlet("/update-task")
 public class EditServlet extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
+		TodoService service = new TodoService();
+		service.deleteTask(req,resp);
 	}
 }
