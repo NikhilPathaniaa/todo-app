@@ -30,6 +30,7 @@
 </head>
 <body>
     <form action="edit-task" method="post">
+    <input type="hidden" name="id" value=<%id %>>
         <fieldset>
             <legend>Edit Task Here,</legend>
             Task Name: <input type="text" name="tname">

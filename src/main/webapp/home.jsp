@@ -40,7 +40,7 @@
 					%><a href="complete?id=<%=task.getId()%>"><button>Complete</button></a></th>
 					<%} %>
 				<th><a href="delete?id=<%=task.getId()%>"><button>delete</button></a></th>
-				<th><a href="edit-task.jsp?name=<%=task.getName()%>&description<%= task.getDescription()%>>"><button>Edit</button></a></th>
+				<th><a href="edit-task.jsp?name=<%=task.getName()%>&description<%= task.getDescription()%>&id<%= task.getId()%>"><button>Edit</button></a></th>
 			</tr>
 			<%} %>
 		</table>

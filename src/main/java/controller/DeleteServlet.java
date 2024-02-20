@@ -17,11 +17,11 @@ public class DeleteServlet extends HttpServlet{
 		if(req.getSession().getAttribute("user")!=null)
 		{
 			TodoService service = new TodoService();
-			service.completeTask(req,resp);
+			service.deleteTask(req,resp);
 		}
 		else
 		{
-			resp.getWriter().print("");
+			resp.getWriter().print("<h1 align='center' style='color:red'>Invalid session</h1>");
 			req.getRequestDispatcher("login.html").include(req, resp);
 		}
 	}
