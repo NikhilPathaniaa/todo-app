@@ -15,6 +15,6 @@ public class EditServlet extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		TodoService service = new TodoService();
-		service.deleteTask(req,resp);
+		service.updateTask(req,resp);
 	}
 }

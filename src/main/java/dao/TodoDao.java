@@ -52,4 +52,14 @@ public class TodoDao {
 		transaction.commit();
 	}
 
+	public boolean update(int id, String tname, String tdescription) {
+		TodoTask task = manager.find(TodoTask.class, id);
+		task.setName(tname);
+		task.setDescription(tdescription);
+		transaction.begin();
+		manager.merge(task);
+		transaction.commit();
+		return true;
+	}
+
 }

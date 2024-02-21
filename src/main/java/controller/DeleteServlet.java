@@ -13,7 +13,7 @@ import service.TodoService;
 @WebServlet("/delete")
 public class DeleteServlet extends HttpServlet{
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 			TodoService service = new TodoService();
 			service.deleteTask(req,resp);
 	}

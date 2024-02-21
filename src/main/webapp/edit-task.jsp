@@ -16,7 +16,7 @@ div {
 	<div>
 		<h1>Edit Task</h1>
 		<form action="update-task" method="post">
-		<input type="hidden" name="id" value="<%=request.getParameter("id")%>">
+		<input type="hidden" name="id" value="<%=request.getParameter("id")%>" >
 			<fieldset>
 				<legend>Enter Task here,</legend>
 				<table>

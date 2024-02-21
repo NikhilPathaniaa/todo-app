@@ -124,22 +124,22 @@ public class TodoService {
 		String tname = req.getParameter("tname");
 		String tdescription = req.getParameter("tdescription");
 		int id=Integer.parseInt(req.getParameter("id"));
-
-		TodoTask task = new TodoTask();
-		task.setId(id);
+		TodoTask task=dao.findTaskById(id);
+//		TodoTask task = new TodoTask();
+		
 		task.setName(tname);
 		task.setDescription(tdescription);
-		task.setStatus(false);
 		task.setCreatedTime(LocalDateTime.now());
+		dao.updateTask(task);
+		
+//		task.setUser(user);
 
 		TodoUser user = (TodoUser) req.getSession().getAttribute("user");
-		task.setUser(user);
-
-		dao.updateTask(task);
+		List<TodoTask> tasks = dao.fetchTaskByUser(user.getId());
 
 		resp.getWriter().print("<h1 align='center' style='color:green'>Task Updated Success</h1>");
 		
-		List<TodoTask> tasks = dao.fetchTaskByUser(user.getId());
+		
 		req.setAttribute("tasks", tasks);
 		req.getRequestDispatcher("home.jsp").include(req, resp);
 		
