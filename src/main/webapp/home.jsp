@@ -76,7 +76,7 @@ g<html>
 		</table>
 	</div>
 	<%} %>
-	<a href="add-task.html"><button class="extra">add tasks</a>
+	<a href="add-task.html"><button class="extra">add tasks</button></a>
 	
 </body>
 </html>
